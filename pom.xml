@@ -6,4 +6,8 @@
   <packaging>pom</packaging>
   <name>tutorial.world</name>
   <description>hello tutorial world</description>
+  <modules>
+  	<module>hello-world-app</module>
+  	<module>hello-world-web</module>
+  </modules>
 </project>
