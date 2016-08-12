@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd"
+	default-autowire="no" default-lazy-init="true">
+
+	<!-- 数据源配置 dbcp -->
+	<bean id="activityDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}"></property>
+		<property name="url"
+			value="jdbc:mysql://${activity.jdbc.address}?useUnicode=true&amp;characterEncoding=utf-8"></property>
+		<property name="username" value="${activity.jdbc.username}"></property>
+		<property name="password" value="${activity.jdbc.password}"></property>
+
+		<!-- Connection Pooling Info -->
+		<property name="initialSize" value="${cpool.initialSize}" />
+		<property name="maxActive" value="${cpool.maxActive}" />
+		<property name="maxIdle" value="${cpool.maxIdle}" />
+		<property name="maxWait" value="${cpool.maxWait}" />
+		<property name="poolPreparedStatements" value="${cpool.poolPreparedStatements}" />
+		<property name="defaultAutoCommit" value="${cpool.defaultAutoCommit}" />
+
+		<!-- 运行判断连接超时任务的时间间隔，单位为毫秒，默认为-1，即不执行任务。 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${cpool.timeBetweenEvictionRunsMillis}"></property>
+		<!-- 连接的超时时间，默认为半小时。 -->
+		<property name="minEvictableIdleTimeMillis" value="${cpool.minEvictableIdleTimeMillis}"></property>
+	</bean>
+
+	<!-- Mybatis acheat 数据源 -->
+	<!-- Mybatis SqlSessionFactory -->
+	<bean id="activitySqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="activityDataSource" />
+		<property name="configLocation"
+			value="classpath:spring/db/mybatis-configuration.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:dao/mapper/activity/*.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- transaction -->
+	<tx:annotation-driven proxy-target-class="true"
+		transaction-manager="activityTransactionManager" />
+	<bean id="activityTransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="activityDataSource" />
+	</bean>
+	<bean id="activityTransactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="activityTransactionManager" />
+	</bean>
+	<!-- Mapper接口所在包名，Spring会自动查找其下的Mapper -->
+	<bean id="activityMapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="activitySqlSessionFactory"></property>
+		<property name="basePackage" value="cn.leo.spring.dao.mybatis.activity" />
+	</bean>
+</beans>  
