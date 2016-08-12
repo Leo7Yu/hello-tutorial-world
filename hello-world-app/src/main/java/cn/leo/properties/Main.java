@@ -7,7 +7,7 @@ import java.util.Properties;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        InputStream inStream = Main.class.getClassLoader().getResourceAsStream("prop.properties");
+        InputStream inStream = Main.class.getClassLoader().getResourceAsStream("env-tutorial.properties");
         Properties prop = new Properties();
         try {
             prop.load(inStream);
@@ -20,7 +20,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
-        String value = prop.getProperty("hello.properties.world", "20");
+        String value = prop.getProperty("runtime.env", "20");
         System.out.println(value);
     }
 
