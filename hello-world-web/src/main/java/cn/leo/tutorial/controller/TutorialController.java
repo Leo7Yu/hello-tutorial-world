@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,8 +19,9 @@ import cn.leo.spring.service.TutorialService;
 
 @Controller
 @RequestMapping("/tutoril/")
+@Slf4j
 public class TutorialController {
-
+    
     @Resource
     private TutorialService tutorialService;
     
@@ -32,6 +35,7 @@ public class TutorialController {
     @RequestMapping(path = "getInt")
     @ResponseBody
     public Integer getInteger(Integer number){
+        log.debug("in getInteger...");
         return tutorialService.getInt(number);
     }
 }
