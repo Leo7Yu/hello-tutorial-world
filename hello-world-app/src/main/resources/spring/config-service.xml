@@ -38,4 +38,11 @@
 	<context:component-scan base-package="cn.leo.spring">
 		<!-- <context:exclude-filter type="regex" expression="cn.jf180.app.ems.support.EMSSendServiceImpl"/> -->
 	</context:component-scan>
+
+	<!--异步线程池 -->
+	<bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="${taskExecutor.corePoolSize}" />
+		<property name="maxPoolSize" value="${taskExecutor.maxPoolSize}" />
+	</bean>
 </beans>  
