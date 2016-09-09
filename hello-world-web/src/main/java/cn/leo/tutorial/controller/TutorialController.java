@@ -15,27 +15,40 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.leo.spring.service.TutorialService;
 
-//http://localhost:8080/hello-world-web/tutoril/getInt?number=2
-
 @Controller
 @RequestMapping("/tutoril/")
 @Slf4j
 public class TutorialController {
-    
+
     @Resource
     private TutorialService tutorialService;
-    
-    @RequestMapping(path = "index",method=RequestMethod.GET)
+
+    @RequestMapping(path = "index", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView index(){
+    public ModelAndView index() {
         Map<String, Object> model = new HashMap<>();
         return new ModelAndView("tutorial/index", model);
     }
-    
+
+    // http://localhost:8080/hello-world-web/tutoril/getInt?number=2
     @RequestMapping(path = "getInt")
     @ResponseBody
-    public Integer getInteger(Integer number){
+    public Integer getInteger(Integer number) {
         log.debug("in getInteger...");
         return tutorialService.getInt(number);
+    }
+
+    // http://localhost:8080/hello-world-web/tutoril/addAid?aid=2
+    @RequestMapping(path = "addAid")
+    @ResponseBody
+    public Integer addAid(Integer aid) {
+        log.debug("in getInteger...");
+        int insertResult=0;
+        try {
+            insertResult=tutorialService.helloTransaction(aid);
+        } catch (Exception e) {
+            insertResult=-1;
+        }
+        return insertResult;
     }
 }

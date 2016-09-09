@@ -6,4 +6,8 @@
         select aid from lottery_config where id=#{id}
     </select>
     
+    <insert id="insertLotteryAid" parameterType="int">
+        insert into lottery_config(aid)
+        values(#{aid})
+    </insert>
 </mapper>

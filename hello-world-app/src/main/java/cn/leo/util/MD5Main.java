@@ -8,9 +8,9 @@ public class MD5Main {
         String result = getMD5("15201528494");
         System.err.println(result);
     }
-//    6a0746515051c097d42fac9ffab31cfb
-//    6a0746515051c097d42fac9ffab31cfb
-    
+
+    // 6a0746515051c097d42fac9ffab31cfb
+
     /**
      * 生成md5
      * 
@@ -30,6 +30,8 @@ public class MD5Main {
             byte[] buff = md.digest(input);
 
             // 4 把数组每一字节（一个字节占八位）换成16进制连成md5字符串
+            // 也可使用Hex包转md5str=Hex.toHexString(buff);
+            // maven依赖bcprov-jdk15on
             md5str = bytesToHex(buff);
 
         } catch (Exception e) {

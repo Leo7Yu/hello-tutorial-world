@@ -12,6 +12,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>edu.uci.ics</groupId>
+			<artifactId>crawler4j</artifactId>
+			<version>4.2</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 		</dependency>
@@ -87,17 +93,17 @@
 			<artifactId>spring-tx</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-        </dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-        </dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -115,21 +121,27 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<!-- spring end -->
+		
+		<dependency>
+            <groupId>com.googlecode.rapid-framework</groupId>
+            <artifactId>rapid-generator</artifactId>
+            <version>4.0.6</version>
+        </dependency>
 	</dependencies>
-	
+
 	<build>
-	   <filters>
-            <filter>src/main/env/${runtime.env}/env-tutorial.properties</filter>
-        </filters>
-        
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <excludes>
-                    <exclude>logback-test.xml</exclude>
-                </excludes>
-            </resource>
-        </resources>
+		<filters>
+			<filter>src/main/env/${runtime.env}/env-tutorial.properties</filter>
+		</filters>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>logback-test.xml</exclude>
+				</excludes>
+			</resource>
+		</resources>
 	</build>
 </project>
