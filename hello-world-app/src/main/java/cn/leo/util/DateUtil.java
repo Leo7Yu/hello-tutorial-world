@@ -1,13 +1,19 @@
 package cn.leo.util;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtil {
     public static final String DATE_INTEGER_FORMAT = "yyyyMMdd";
+    public static final String DATE_NORMAL_FORMAT = "yyyy-MM-dd HH:mm:ss";
     
     //TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS);
+    
+    public static final Date parseNormalFormat(String dateString) throws ParseException{
+        return new SimpleDateFormat(DATE_NORMAL_FORMAT).parse(dateString);
+    }
     
     public static final String format(Date date, String pattern) {
         return new SimpleDateFormat(pattern).format(date);
@@ -60,13 +66,14 @@ public class DateUtil {
     }
     
     public static void main(String[] args) {
-        Date begin=new Date();
-        Date end=addMinutes(begin,1);
-        
-        long range=computRange(begin, end);
-        System.out.println(range);
-        
-        end=getDayEnd(begin);
-        System.out.println(end);
+        try {
+            Date begin=parseNormalFormat("2016-04-01 16:00:00");
+            Calendar cal=Calendar.getInstance();
+            cal.setTime(begin);
+            System.out.println(cal.get(Calendar.HOUR_OF_DAY));
+            
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }
