@@ -13,12 +13,21 @@ public class StringUtil {
         return false;
     }
     
+    public static String leftAppend(int number){
+        
+        String str = String.format("50%06d", number);
+        
+        return str;
+    }
+    
     public static String replaceMiddle(String target){
         return target.replaceAll("(\\d{3})\\d{4}(\\d*)", "$1****$2");
     }
     
     public static void main(String[] args) {
-        String result=replaceMiddle("6145");
+        double price=10.0;
+        
+        String result=leftAppend((int) (price * 100));
         System.out.println(result);
     }
 }
