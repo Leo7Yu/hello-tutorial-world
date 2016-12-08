@@ -1,0 +1,6 @@
+#! /bin/sh -
+source_path=$1
+target_path=$2
+echo table path is $source_path, target path is $target_path.
+sed '1,3d;$d;s/| //g;s/ |//g' $source_path > $target_path
+
