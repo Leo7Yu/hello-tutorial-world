@@ -7,19 +7,13 @@ alias ssh_xiaomi='ssh root@192.168.31.1'
 
 alias ssh_fortress='ssh -p2201 root@203.100.83.126'
 
-alias ssh_data_mine='ssh root@101.201.39.94'
-alias ssh_web01='ssh root@123.56.186.60'
-alias ssh_monitor='ssh root@101.200.204.53'
+alias ssh_data_mine='ssh jianfeng@101.201.39.94'
+alias ssh_web01='ssh jianfeng@123.56.186.60'
+alias ssh_monitor='ssh jianfeng@101.200.204.53'
 alias ssh_backmgr='ssh jianfeng@123.56.186.120'
 
 alias ssh_5='ssh root@192.168.2.5'
 alias ssh_7='ssh root@192.168.2.7'
-
-alias mysql_test='mysql -h192.168.2.7 -ujft -p3edcvBHU8 -P3306 jft_master'
-alias mysql_activity='mysql -h101.201.39.94 -ujft -p8uHbVcDe3 -P3307 jft_activity'
-alias mysql_stat='mysql -h101.201.39.94 -ujf_stat -p"p7Wb&*i<3Ne," jft_stat'
-alias mysql_order_slave='mysql -h101.201.39.94 -ujfread -p"T9iv#(k2ju;h" jft_order'
-alias mysql_master_slave='mysql -h101.201.39.94 -ujfread -p"T9iv#(k2ju;h" jft_master'
 
 alias t='tmux'
 
