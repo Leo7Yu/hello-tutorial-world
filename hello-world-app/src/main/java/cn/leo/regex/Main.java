@@ -1,4 +1,4 @@
-package cn.leo.pattern;
+package cn.leo.regex;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
