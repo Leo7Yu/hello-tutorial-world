@@ -20,6 +20,11 @@ public class Main {
 			System.out.println(resp.data);
 		}
 		System.out.println(resp.msg);
+		
+		
+		JSONObject jsonObject=JSON.parseObject(json);
+		int code=jsonObject.getInteger("code");
+		System.out.println("code:"+code);
 	}
 
 }

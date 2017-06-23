@@ -3,6 +3,7 @@ package cn.leo.sign;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,13 @@ public class CheckSignMain {
 	private static final String PRIVATE_KEY = "cWvJj78B6E4QhcumOfaU0dpB!GXu$Rfe";// 32位密钥
 
 	public static void main(String[] args) {
-
+		java.sql.Timestamp timestamp=new java.sql.Timestamp(2017, 03, 10, 14, 6, 14, 0);
+		long time=timestamp.getTime();
+		System.out.println(time/1000L);
+		
+		Date date=new Date();
+		System.out.println(date.getTime()/1000L);
+		
 		Map<String, Object> params = new HashMap<>();
 		params.put("eid", "10000"); // 企业标识
 		params.put("orderno", "201703100000001");// 企业订单号
@@ -29,12 +36,13 @@ public class CheckSignMain {
 			sBuilder.append(name);
 			sBuilder.append(params.get(name));
 		}
-		
+
 		sBuilder.append(PRIVATE_KEY);
-		
-		String plainSign=sBuilder.toString();
-		System.out.println("plain sig:"+plainSign);
-		String sig=MD5Utils.md5(plainSign);
+
+		String plainSign = sBuilder.toString();
+		System.out.println("plain sig:" + plainSign);
+		String sig = null;
+//		sig = MD5Utils.md5(plainSign);
 
 		return sig;
 	}
