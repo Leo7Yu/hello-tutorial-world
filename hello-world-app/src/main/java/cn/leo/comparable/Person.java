@@ -1,5 +1,7 @@
 package cn.leo.comparable;
 
+import java.io.Serializable;
+
 import lombok.Getter;
 
 /** 
@@ -8,11 +10,19 @@ import lombok.Getter;
  * 
  */
 @Getter
-public class Person {
-    private int age;
+public class Person implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int age;
 
     public Person(int age) {
         this.age=age;
+    }
+    
+    public Person(){
+    	
     }
 
 }

@@ -3,7 +3,7 @@ package cn.leo.json.fastjson;
 public class SinopecNetChargeResp {
 
 	public String code;
-	public String data;
+	public Data data;
 	public String msg;
 	public Long timestamp;
 	

@@ -23,6 +23,7 @@ public class TutorialController {
     @Resource
     private TutorialService tutorialService;
 
+    // http://localhost:8080/hello-world-web/tutoril/index
     @RequestMapping(path = "index", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView index() {

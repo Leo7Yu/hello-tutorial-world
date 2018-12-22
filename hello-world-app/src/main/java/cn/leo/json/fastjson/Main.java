@@ -13,8 +13,8 @@ public class Main {
 		System.out.println(resp.code);
 		if("0".equals(resp.code)){
 			System.out.println(resp.data);
-			SinopecNetChargeResp.Data data=JSON.parseObject(resp.data, SinopecNetChargeResp.Data.class);
-			System.out.println(data.jsessionId);
+//			SinopecNetChargeResp.Data data=JSON.parseObject(resp.data, SinopecNetChargeResp.Data.class);
+//			System.out.println(data.jsessionId);
 			
 		}else{
 			System.out.println(resp.data);
